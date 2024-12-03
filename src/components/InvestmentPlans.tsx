@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Shield, Zap, Crown } from 'lucide-react';
 
 const plans = [
@@ -29,6 +30,12 @@ const plans = [
 ];
 
 export const InvestmentPlans = () => {
+  const navigate = useNavigate();
+
+  const handlePlanSelection = (planName: string) => {
+    navigate(`/auth?mode=signup&plan=${encodeURIComponent(planName)}`);
+  };
+
   return (
     <section className="py-24 bg-gray-900">
       <div className="container mx-auto px-6">
@@ -59,7 +66,10 @@ export const InvestmentPlans = () => {
                   </li>
                 ))}
               </ul>
-              <button className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all">
+              <button
+                onClick={() => handlePlanSelection(plan.name)}
+                className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all"
+              >
                 Choose Plan
               </button>
             </div>
