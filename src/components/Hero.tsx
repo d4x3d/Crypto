@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/auth?mode=signup');
+  };
+
   return (
     <div className="relative min-h-screen flex items-center">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-black opacity-90" />
@@ -14,7 +21,10 @@ export const Hero = () => {
           <p className="text-xl text-gray-300 mb-8">
             Experience the future of investing with our secure, transparent, and innovative crypto investment platform.
           </p>
-          <button className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:shadow-purple-500/25 flex items-center gap-2">
+          <button 
+            onClick={handleGetStarted}
+            className="group bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all hover:shadow-lg hover:shadow-purple-500/25 flex items-center gap-2"
+          >
             Get Started Today
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
